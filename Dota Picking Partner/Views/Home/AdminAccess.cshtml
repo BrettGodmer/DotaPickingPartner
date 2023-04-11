@@ -1,0 +1,16 @@
+﻿@model SignIn
+<head>
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="~/css/IndexStyle.css">
+</head>
+@using (Html.BeginForm("ConfirmAccess", "Home"))
+{
+    <div class="form-group">
+        <label for="pwd">Password:</label>
+        @Html.TextBoxFor(m => m.userInput, new { @class = "form-control", @type = "password", required = "required", id="pwd"})
+        <br>
+        <br>
+    </div>
+    <button type="submit" class="btn btn-outline-dark">Login</button>
+    
+}

@@ -1,0 +1,62 @@
+﻿@model HeroSelections
+
+<head>
+	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="~/css/IndexStyle.css">
+	<script>
+		function updateHeroImage(selectId, imgId) {
+			var select = document.getElementById(selectId);
+			var img = document.getElementById(imgId);
+			var selectedHero = select.value;
+			img.src = '@Url.Content("~/css/DotaHeroIcons/")' + selectedHero + '.png'
+		}
+	</script>
+</head>
+<body>
+	<div class="container-fluid">
+		<h2>Enter Opponents Hero Picks</h2>
+		<br/>
+		<main>
+			@using (Html.BeginForm("CalculateWinrates", "Home", FormMethod.Post))
+			{
+				<div class="row">
+					<div class="col">
+						<img id="heroOneImg" src="~/css/DotaHeroIcons/default.png" class="rounded mx-auto d-block" width="128" height="72">
+						<br />
+						@Html.DropDownListFor(m => m.heroOne, new SelectList(Enum.GetValues(typeof(HeroNames))), "Select a hero", 
+							new { @class = "btn-dark dropdown-toggle", id = "heroOneSelect", onchange = "updateHeroImage('heroOneSelect', 'heroOneImg')" })
+					</div>
+					<div class="col">
+						<img id="heroTwoImg" src="~/css/DotaHeroIcons/default.png" class="rounded mx-auto d-block" width="128" height="72">
+						<br />
+						@Html.DropDownListFor(m => m.heroTwo, new SelectList(Enum.GetValues(typeof(HeroNames))), "Select a hero", 
+							new { @class = "btn-dark dropdown-toggle", id = "heroTwoSelect", onchange = "updateHeroImage('heroTwoSelect', 'heroTwoImg')" })
+					</div>
+					<div class="col">
+						<img id="heroThreeImg" src="~/css/DotaHeroIcons/default.png" class="rounded mx-auto d-block" width="128" height="72">
+						<br />
+						@Html.DropDownListFor(m => m.heroThree, new SelectList(Enum.GetValues(typeof(HeroNames))), "Select a hero", 
+							new { @class = "btn-dark dropdown-toggle", id = "heroThreeSelect", onchange = "updateHeroImage('heroThreeSelect', 'heroThreeImg')" })
+					</div>
+					<div class="col">
+						<img id="heroFourImg" src="~/css/DotaHeroIcons/default.png" class="rounded mx-auto d-block" width="128" height="72">
+						<br />
+						@Html.DropDownListFor(m => m.heroFour, new SelectList(Enum.GetValues(typeof(HeroNames))), "Select a hero", 
+							new { @class = "btn-dark dropdown-toggle", id = "heroFourSelect", onchange = "updateHeroImage('heroFourSelect', 'heroFourImg')" })
+					</div>
+					<div class="col">
+						<img id="heroFiveImg" src="~/css/DotaHeroIcons/default.png" class="rounded mx-auto d-block" width="128" height="72">
+						<br />
+						@Html.DropDownListFor(m => m.heroFive, new SelectList(Enum.GetValues(typeof(HeroNames))), "Select a hero", 
+							new { @class = "btn-dark dropdown-toggle", id = "heroFiveSelect", onchange = "updateHeroImage('heroFiveSelect', 'heroFiveImg')" })
+					</div>
+				</div>
+				<br />
+
+				<button type="submit" class="btn btn-outline-dark">Calculate</button>
+
+			}
+		</main>
+		<br/>
+	</div>
+</body>

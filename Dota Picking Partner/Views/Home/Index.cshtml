@@ -1,0 +1,42 @@
+﻿
+<html>
+<head>
+	<title>Dota Picking Partner</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="~/css/IndexStyle.css">
+</head>
+<body>
+	<header>
+		<div class="banner">
+		</div>
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+			<a class="navbar-brand" href="#">Dota Picking Partner</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item">
+						@Html.ActionLink("Picking Partner", "PickingPartner", new { controller = "Home" }, new { @class = "btn-dark" })
+					</li>
+					<li class="nav-item">
+						@Html.ActionLink("Contact Us", "ContactUs", new { controller = "Home" }, new { @class = "btn-dark" })
+					</li>
+					<li class="nav-item">
+						@Html.ActionLink("₳", "AdminAccess", new { controller = "Home" }, new { @class = "btn-dark" })
+					</li>
+				</ul>
+			</div>
+		</nav>
+	</header>
+	<main class="container">
+		<h1>Welcome to Dota Picking Partner</h1>
+		<p>This web app is meant to help you counter pick your opponent in Valve's game DotA 2. You can use the Picking Partner by inputing the other teams picks. The application then calculates your best counters based on all the possible hero's winrates. If you enjoy or have problems with our webapp please contact us!</p>
+	</main>
+
+	
+
+</body>
+</html>

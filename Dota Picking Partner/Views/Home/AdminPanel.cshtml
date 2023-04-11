@@ -1,0 +1,33 @@
+﻿@model AdminPanelModel
+<head>
+	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="~/css/IndexStyle.css">
+</head>
+<body>
+	<div>@Html.ActionLink("Run Data Scraper", "RunScraper", "Home")</div>
+</body>
+<br />
+<div class="container-fluid">
+	<table class="table table-hover table-bordered">
+	<thead>
+		<tr>
+			<th>Contact</th>
+			<th>Comment</th>
+			<th> </th>
+		</tr>
+	</thead>
+	<tbody>
+
+		@foreach (var item in Model.feedback.recentFeedback){
+			@foreach(var subitem in item){
+				<tr>
+					<td>@subitem.Key</td>
+					<td>@subitem.Value</td>
+					<td>@Html.ActionLink("Remove", "RemoveFeedback", "Home", new {docName = subitem.Key})</td>
+				</tr>
+			}
+		}
+
+	</tbody>
+</table>
+</div>

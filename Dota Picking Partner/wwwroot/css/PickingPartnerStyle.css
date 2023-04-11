@@ -1,0 +1,42 @@
+﻿body {
+    background-color: white;
+    color: black;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 50px;
+}
+
+.col {
+    width: 200px;
+    height: 200px;
+    background-color: white;
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+h2 {
+    text-align: center;
+    color: black;
+}
+
+button {
+    background-color: white;
+    color: black;
+}
+
+* {
+    background-color: white;
+    color: black;
+}
