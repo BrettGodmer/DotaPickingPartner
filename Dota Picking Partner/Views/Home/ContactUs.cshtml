@@ -1,5 +1,5 @@
 ﻿@model UserFeedback
-<html>
+<html data-bs-theme="dark">
 <head>
 	<title>Dota Picking Partner</title>
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -12,9 +12,10 @@
             <p>Comment: @Html.TextBoxFor(m => m.Comment, new {@class = "form-control", required="required", placeholder = "Let us know what you think about Dota Picking Partner"})</p>
         </div>
         <div class="form-group">
-            <p>Contact Info: @Html.TextBoxFor(m => m.ContactInfo, new {required = "required"})</p>
+            <p>Contact Info: @Html.DisplayFor(m => m.ContactInfo)</p>
         </div>
-            <button type="submit" class="btn btn-outline-dark">Submit</button>
+        @Html.HiddenFor(m => m.ContactInfo)
+        <button type="submit" class="btn btn-outline-dark">Submit</button>
     }
 </body>
 </div>

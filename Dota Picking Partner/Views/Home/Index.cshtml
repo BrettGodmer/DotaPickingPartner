@@ -1,5 +1,5 @@
-﻿
-<html>
+﻿@model IndexViewModel
+<html data-bs-theme="dark">
 <head>
 	<title>Dota Picking Partner</title>
 	<meta charset="utf-8">
@@ -21,9 +21,16 @@
 					<li class="nav-item">
 						@Html.ActionLink("Picking Partner", "PickingPartner", new { controller = "Home" }, new { @class = "btn-dark" })
 					</li>
-					<li class="nav-item">
-						@Html.ActionLink("Contact Us", "ContactUs", new { controller = "Home" }, new { @class = "btn-dark" })
-					</li>
+					@if (Model.isGuest == false){
+						<li class="nav-item">
+						@Html.ActionLink("Contact Us", "ContactUs", "Home", new {userEmail = Model.email}, new { @class = "btn-dark" })
+						</li>
+					}
+					@if (Model.isGuest == true){
+						<li class="nav-item">
+							@Html.ActionLink("Login", "Login", new { controller = "Home" }, new { @class = "btn-dark" })
+						</li>
+					}
 					<li class="nav-item">
 						@Html.ActionLink("₳", "AdminAccess", new { controller = "Home" }, new { @class = "btn-dark" })
 					</li>
