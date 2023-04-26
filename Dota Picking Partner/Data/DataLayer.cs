@@ -76,8 +76,69 @@ namespace Dota_Picking_Partner.Data
 
             return feedback;
         }
+        public CombinedHeroCounters CombineHeroWinrates(HeroCounters counters)
+        {
+            CombinedHeroCounters combined = new CombinedHeroCounters();
 
-        public CombinedHeroCounters CombineHeroWinrates(HeroCounters heroCounters)
+            if (counters.heroOneCounters is not null)
+            {
+                combined.combinedHeroCounters = counters.heroOneCounters;
+            }
+            if (counters.heroTwoCounters is not null)
+            {
+                combined.combinedHeroCounters = counters.heroTwoCounters;
+            }
+            if (counters.heroThreeCounters is not null)
+            {
+                combined.combinedHeroCounters = counters.heroThreeCounters;
+            }
+            if (counters.heroFourCounters is not null)
+            {
+                combined.combinedHeroCounters = counters.heroFourCounters;
+            }
+            if (counters.heroFiveCounters is not null)
+            {
+                combined.combinedHeroCounters = counters.heroFiveCounters;
+            }
+
+            if (combined.combinedHeroCounters is null)
+            {
+                throw new Exception("No heroes selected");
+            }
+
+            if (counters.heroOneCounters is not null)
+            {
+                combined.combinedHeroCounters = combined.combinedHeroCounters
+                                .Zip(counters.heroOneCounters, (kvp1, kvp2) => new { kvp1.Key, Value = (object)Math.Round(((Convert.ToDouble(kvp1.Value) + Convert.ToDouble(kvp2.Value)) / 2.0), 2) })
+                                .ToDictionary(x => x.Key, x => x.Value);
+            }
+            if (counters.heroTwoCounters is not null)
+            {
+                combined.combinedHeroCounters = combined.combinedHeroCounters
+                                .Zip(counters.heroTwoCounters, (kvp1, kvp2) => new { kvp1.Key, Value = (object)Math.Round(((Convert.ToDouble(kvp1.Value) + Convert.ToDouble(kvp2.Value)) / 2.0), 2) })
+                                .ToDictionary(x => x.Key, x => x.Value);
+            }
+            if (counters.heroThreeCounters is not null)
+            {
+                combined.combinedHeroCounters = combined.combinedHeroCounters
+                                .Zip(counters.heroThreeCounters, (kvp1, kvp2) => new { kvp1.Key, Value = (object)Math.Round(((Convert.ToDouble(kvp1.Value) + Convert.ToDouble(kvp2.Value)) / 2.0), 2) })
+                                .ToDictionary(x => x.Key, x => x.Value);
+            }
+            if (counters.heroFourCounters is not null)
+            {
+                combined.combinedHeroCounters = combined.combinedHeroCounters
+                                .Zip(counters.heroFourCounters, (kvp1, kvp2) => new { kvp1.Key, Value = (object)Math.Round(((Convert.ToDouble(kvp1.Value) + Convert.ToDouble(kvp2.Value)) / 2.0), 2) })
+                                .ToDictionary(x => x.Key, x => x.Value);
+            }
+            if (counters.heroFiveCounters is not null)
+            {
+                combined.combinedHeroCounters = combined.combinedHeroCounters
+                                .Zip(counters.heroFiveCounters, (kvp1, kvp2) => new { kvp1.Key, Value = (object)Math.Round(((Convert.ToDouble(kvp1.Value) + Convert.ToDouble(kvp2.Value)) / 2.0), 2) })
+                                .ToDictionary(x => x.Key, x => x.Value);
+            }
+            return combined;
+        }
+        public CombinedHeroCounters CombineHeroWinrates_old(HeroCounters heroCounters)
         {
             CombinedHeroCounters combinedHeroCounters = new CombinedHeroCounters();
             if (heroCounters.heroOneCounters is not null)
